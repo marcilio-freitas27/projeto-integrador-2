@@ -6,11 +6,11 @@
 
 ```mermaid
     gantt
-        title Sistema de Economia de Energia
+        title Dimenlogia
         dateFormat  YYYY-MM-DD
 
         section Planejamento
-        Tema                :done, a1, 2022-10-24, 7d
+        Tema                :done, a1, 2023-04-01, 7d
         Definição           :done, a2, after a1, 7d
 
         section Requisitos
@@ -28,4 +28,5 @@
 
         section Defesa
         Apresentação        :e1, after d2, 7d
+
 ```
