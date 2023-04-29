@@ -8,18 +8,19 @@
     gantt
         title Dimenlogia
         dateFormat  YYYY-MM-DD
+        excludes    Sunday
 
         section Planejamento
-        Tema                        :a1, 2023-04-01, 14d
+        Tema                        :done ,a1 , 2023-04-01, 14d
 
         section Requisitos
-        Documentação                :b1, after a1  , 35d
+        Documentação                :active, b1, after a1  , 35d
 
         section Implementação
         Protótipo                   :c1, after b1, 28d
         Testes                      :c2, after c1, 14d
 
         section Defesa
-        Apresentação  :d1, after c2, 7d
+        Apresentação                :d1, after c2, 7d
 
 ```
