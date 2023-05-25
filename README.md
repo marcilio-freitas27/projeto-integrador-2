@@ -85,3 +85,7 @@ O NodeJs foi amplamente utilizado nas disciplinas de Desenvolvimento Back-End e 
 O MySQL, que faz parte das disciplinas de Programação para banco de dados e bancos de dados. Não só no uso desse SGBD, mas durante a modelação do cenário. Nas disciplinas de front e back foi feita a criação das classe e seus objetos para a montagem dos sistemas de cada projeto.
 
 Por último, o Jasmine já vem por padrão no Angular assim que um novo projeto é criado e pode ser implementado de forma simples. Isso facilitara na testagem da aplicação assim como o uso da metodologia de testes unitários e TDD(Test-Driven Development).
+
+## Diagrama de Componentes - Dimenlogia
+
+![diagrama-componentes-dimenlogia](imagens/diagrama-componentes-puml.png)
