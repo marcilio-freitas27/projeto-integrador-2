@@ -16,16 +16,33 @@ export class HomePage {
   chart: any;
   ctx: any;
   items: any[];
+  showTutorial: boolean;
+  isAlertOpen = false;
+  alert: any;
+  public alertButtons = ['OK'];
+  public progress = 0;
   constructor(private router: Router) {
     this.items = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM']
+    this.showTutorial = false;
   }
 
   ngOnInit(){
-    this.getChart()
+    this.getChart();
+    this.getProgress();
+    this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`
   }
 
   onClick(){
     this.router.navigate(['/inicio'])
+  }
+
+  tutorial(){
+    this.showTutorial = true;
+    this.setOpen(true);
+  }
+
+  closeTutorial(){
+    this.showTutorial = false;
   }
 
   getChart(){
@@ -55,5 +72,21 @@ export class HomePage {
     this.items = event;
   }
 
-  
+  getProgress(){
+    setInterval(() => {
+      this.progress += 0.01;
+
+      // Reset the progress bar when it reaches 100%
+      // to continuously show the demo
+      if (this.progress > 1) {
+        setTimeout(() => {
+          this.progress = 0;
+        }, 1000);
+      }
+    }, 50);
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
+  }
 }

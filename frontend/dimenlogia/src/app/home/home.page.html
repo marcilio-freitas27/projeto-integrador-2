@@ -18,7 +18,7 @@
       </ion-button>
     </ion-item>
     <ion-item color="primary">
-      <ion-button (click)="onClick()" fill="clear" color="dark">
+      <ion-button (click)="tutorial()" fill="clear" color="dark">
         <ion-icon slot="start" name="list"></ion-icon>Tutorial
       </ion-button>
     </ion-item>
@@ -78,3 +78,14 @@
     </ion-toolbar>
   </ion-footer>
 </div>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Alert"
+  subHeader="Important message"
+  [message]="alert"
+  [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)"
+></ion-alert>
+
+
