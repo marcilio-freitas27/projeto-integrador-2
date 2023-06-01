@@ -1,0 +1,7 @@
+{
+  "name": "dimenlogia",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,97 @@
+.home {
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: 10px solid #3880ff
+}
+.rectangle-6 {
+  border-radius: 10px;
+  height: 51px;
+  width: 338px;
+  background-color: #82cbff;
+}
+.rectangle-7 {
+  border-radius: 10px;
+  height: 51px;
+  width: 338px;
+  background-color: #82cbff;
+}
+.group-1 {
+  height: 30px;
+  width: 40px;
+}
+.rectangle-8 {
+  opacity: 0.3400000035762787;
+  height: 7px;
+  width: 40px;
+  background-color: #000000;
+  border: 1px solid #000000;
+}
+.rectangle-1-0 {
+  opacity: 0.3400000035762787;
+  height: 7px;
+  width: 40px;
+  background-color: #000000;
+  border: 1px solid #000000;
+}
+.rectangle-9 {
+  opacity: 0.3400000035762787;
+  height: 7px;
+  width: 40px;
+  background-color: #000000;
+  border: 1px solid #000000;
+}
+.text-1 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 20px;
+  font-family: Inter;
+  line-height: auto;
+  color: #000000;
+}
+.text-2 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 20px;
+  font-family: Inter;
+  line-height: auto;
+  color: #000000;
+}
+.rectangle-2-8 {
+  height: 64px;
+  width: 76px;
+  background-color: #d9d9d9;
+}
+.rectangle-2-9 {
+  height: 64px;
+  width: 76px;
+  background-color: #d9d9d9;
+}
+.rectangle-3-0 {
+  height: 64px;
+  width: 76px;
+  background-color: #d9d9d9;
+}
+
+ion-menu ion-content ion-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: -15px;
+  margin-right: -16px;
+  border: 1px solid white;
+  border-radius: 20px;
+}
+
+ion-text h1, ion-text h2{
+  margin: 20px;
+}
+
+.scroll{
+  flex-wrap: nowrap;
+  overflow-x: scroll!important;
+  overflow-y: hidden;
+}
+
+ion-header ion-toolbar, ion-footer ion-toolbar{
+  border-top-left-radius: -20px;
+  border-top-right-radius: -20px;
+}
