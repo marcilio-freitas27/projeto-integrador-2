@@ -18,7 +18,7 @@
       </ion-button>
     </ion-item>
     <ion-item color="primary">
-      <ion-button (click)="tutorial()" fill="clear" color="dark">
+      <ion-button id="open-custom-dialog" fill="clear" color="dark">
         <ion-icon slot="start" name="list"></ion-icon>Tutorial
       </ion-button>
     </ion-item>
@@ -79,13 +79,16 @@
   </ion-footer>
 </div>
 
-<ion-alert
-  [isOpen]="isAlertOpen"
-  header="Alert"
-  subHeader="Important message"
-  [message]="alert"
-  [buttons]="alertButtons"
-  (didDismiss)="setOpen(false)"
-></ion-alert>
+<ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+  <ng-template>
+    <div class="wrapper">
+      <h1>Aguarde...</h1>
 
-
+      <ion-list lines="none">
+        <ion-item>
+          <ion-progress-bar  [value]="progress"></ion-progress-bar>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ng-template>
+</ion-modal>
