@@ -32,10 +32,6 @@ export class HomePage {
     this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`
   }
 
-  onClick(){
-    this.router.navigate(['/inicio'])
-  }
-
   getChart(){
     this.ctx = document.getElementById('myChart');
 

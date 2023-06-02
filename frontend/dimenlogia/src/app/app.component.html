@@ -1,3 +1,54 @@
+
 <ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="dark" class="ion-padding">
+      <ion-item color="dark">
+        <ion-avatar slot="start">
+          <img src="../assets/img/avatar.png" />
+        </ion-avatar>
+        <ion-label>Fulano</ion-label>
+      </ion-item>
+      <ion-item color="primary">
+        <ion-button (click)="onClick()" fill="clear" color="dark">
+          <ion-icon slot="start" name="home"></ion-icon>Inicio
+        </ion-button>
+      </ion-item>
+      <ion-item color="primary">
+        <ion-button id="open-custom-dialog" fill="clear" color="dark">
+          <ion-icon slot="start" name="list"></ion-icon>Tutorial
+        </ion-button>
+      </ion-item>
+      <ion-item color="primary">
+        <ion-button (click)="form()" fill="clear" color="dark">
+          <ion-icon slot="start" name="list"></ion-icon>Formulario
+        </ion-button>
+      </ion-item>
+      <ion-item color="primary">
+        <ion-button (click)="onClick()" fill="clear" color="dark">
+          <ion-icon slot="start" name="settings"></ion-icon>Configurações
+        </ion-button>
+      </ion-item>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+    <ng-template>
+      <div class="wrapper">
+        <h1>Aguarde...</h1>
+  
+        <ion-list lines="none">
+          <ion-item>
+            <ion-progress-bar  [value]="progress"></ion-progress-bar>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ng-template>
+  </ion-modal>
+  
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

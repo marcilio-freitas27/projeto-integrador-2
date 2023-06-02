@@ -1,3 +1,4 @@
+import { FormTutorialComponent } from './view/form-tutorial/form-tutorial.component';
 import { InicioComponent } from './view/inicio/inicio.component';
 import { Routes } from '@angular/router';
 
@@ -11,8 +12,12 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
+    path: 'tutorial',
+    loadComponent: () => import('./view/form-tutorial/form-tutorial.component').then((m)=> FormTutorialComponent)
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio',
     pathMatch: 'full',
   },
 ];
