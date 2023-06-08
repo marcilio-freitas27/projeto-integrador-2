@@ -11,38 +11,41 @@
   </ion-header>
   <ion-content color="dark" class="telainicial">
     <ion-list>
-      <ion-item>
-        <ion-label>Do you have any programming experience?</ion-label>
-        <ion-select [(ngModel)]="experience">
-          <ion-select-option value="yes">Yes</ion-select-option>
-          <ion-select-option value="no">No</ion-select-option>
+      <ion-item color="info">
+        <ion-select label="Você tem experiência com programação?" [(ngModel)]="experience">
+          <ion-select-option value="sim">sim</ion-select-option>
+          <ion-select-option value="não">não</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item *ngIf="experience === 'yes'">
-        <ion-label>What programming languages have you worked with?</ion-label>
-        <ion-input type="text" [(ngModel)]="languages"></ion-input>
+      <ion-item color="info">
+        <ion-input type="text" label="Quais linguagens vc conhece?"  labelPlacement="stacked" [(ngModel)]="languages"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Are you familiar with Angular?</ion-label>
-        <ion-select [(ngModel)]="angularKnowledge">
-          <ion-select-option value="yes">Yes</ion-select-option>
-          <ion-select-option value="no">No</ion-select-option>
+      <ion-item color="info">
+        <ion-select label="Você conhece o Angular" [(ngModel)]="angularKnowledge">
+          <ion-select-option (click)="salvar()" value="sim">sim</ion-select-option>
+          <ion-select-option value="não">não</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item *ngIf="experience === 'yes' && angularKnowledge === 'yes'">
-        <ion-label>What is your level of expertise with Angular?</ion-label>
-        <ion-select [(ngModel)]="angularLevel">
+      <ion-item color="info">
+        <ion-select label="Qual o seu nível com Angular?" [(ngModel)]="angularLevel">
           <ion-select-option value="beginner">Beginner</ion-select-option>
           <ion-select-option value="intermediate">Intermediate</ion-select-option>
           <ion-select-option value="advanced">Advanced</ion-select-option>
         </ion-select>
       </ion-item>
+
     </ion-list>
 
-    <ion-button expand="full" (click)="submitForm()">Submit</ion-button>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button shape="round" expand="full" (click)="salvar()">Salvar</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
   </ion-content>
   <ion-footer>
     <ion-toolbar color="primary">

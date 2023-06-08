@@ -23,8 +23,12 @@ export class LayoutComponent  implements OnInit {
     this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`
   }
 
-  onClick(){
+  inicio(){
     this.router.navigate(['/inicio'])
+  }
+
+  home(){
+    this.router.navigate(['/acesso/home'])
   }
 
   form(){

@@ -20,9 +20,7 @@ export class FormTutorialComponent  implements OnInit {
   angularKnowledge!: string;
   angularLevel!: string;
 
-  submitForm() {
-    // Process the form submission
-    // You can access the form inputs and perform the desired logic here
+  salvar() {
     console.log(this.experience, this.languages, this.angularKnowledge, this.angularLevel);
   }
 
