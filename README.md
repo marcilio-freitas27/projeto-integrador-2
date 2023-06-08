@@ -89,3 +89,10 @@ Por último, o Jasmine já vem por padrão no Angular assim que um novo projeto 
 ## Diagrama de Componentes - Dimenlogia
 
 ![diagrama-componentes-dimenlogia](imagens/diagrama-componentes-puml.png)
+
+
+## Faça o build no projeto
+
+'''
+- ionic build && ionic capacitor add android && ionic capacitor add android && cd android && gradlew assembleDebug
+'''
