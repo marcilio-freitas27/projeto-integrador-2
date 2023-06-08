@@ -24,7 +24,7 @@ export class InicioComponent  implements OnInit {
   ngOnInit() {}
 
   onClick(){
-    this.router.navigate(['/home'])
+    this.router.navigate(['/acesso/home'])
   }
 
 }

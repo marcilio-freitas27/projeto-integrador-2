@@ -1,5 +1,4 @@
 import { FormTutorialComponent } from './view/form-tutorial/form-tutorial.component';
-import { InicioComponent } from './view/inicio/inicio.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -8,12 +7,18 @@ export const routes: Routes = [
     loadComponent: () => import('./view/inicio/inicio.component').then((m) => m.InicioComponent),
   },
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
-    path: 'tutorial',
-    loadComponent: () => import('./view/form-tutorial/form-tutorial.component').then((m)=> FormTutorialComponent)
+    path: 'acesso',
+    loadComponent: () => import('./view/layout/layout.component').then((m) => m.LayoutComponent),
+    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+      },
+      {
+        path: 'tutorial',
+        loadComponent: () => import('./view/form-tutorial/form-tutorial.component').then((m)=> FormTutorialComponent)
+      },
+    ]
   },
   {
     path: '',
