@@ -10,17 +10,14 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class LayoutComponent  implements OnInit {
-  
-  alert: any;
+
   public alertButtons = ['OK'];
-  public progress = 0;
   constructor(private router: Router) {
 
   }
 
   ngOnInit(){
-    this.getProgress();
-    this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`
+
   }
 
   inicio(){
@@ -33,17 +30,6 @@ export class LayoutComponent  implements OnInit {
 
   form(){
     this.router.navigate(['/acesso/tutorial'])
-  }
-
-  getProgress(){
-    setInterval(() => {
-      this.progress += 0.01;
-      if (this.progress > 1) {
-        setTimeout(() => {
-          this.progress = 0;
-        }, 1000);
-      }
-    }, 50);
   }
 
 }

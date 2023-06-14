@@ -10,42 +10,47 @@
     </ion-toolbar>
   </ion-header>
   <ion-content color="dark" class="telainicial">
-    <ion-list>
-      <ion-item color="info">
-        <ion-select label="Você tem experiência com programação?" [(ngModel)]="experience">
-          <ion-select-option value="sim">sim</ion-select-option>
-          <ion-select-option value="não">não</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <form [formGroup]="formControl">
+      <ion-list>
+        <ion-item color="info">
+          <ion-select formControlName="programacao" label="Você tem experiência com programação?" >
+            <ion-select-option value="sim">sim</ion-select-option>
+            <ion-select-option value="não">não</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-      <ion-item color="info">
-        <ion-input type="text" label="Quais linguagens vc conhece?"  labelPlacement="stacked" [(ngModel)]="languages"></ion-input>
-      </ion-item>
+        <ion-item color="info">
+          <ion-input formControlName="linguagem" type="text" label="Quais linguagens vc conhece?"  labelPlacement="stacked" ></ion-input>
+        </ion-item>
 
-      <ion-item color="info">
-        <ion-select label="Você conhece o Angular" [(ngModel)]="angularKnowledge">
-          <ion-select-option (click)="salvar()" value="sim">sim</ion-select-option>
-          <ion-select-option value="não">não</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item color="info">
+          <ion-select formControlName="angular" label="Você conhece o Angular" >
+            <ion-select-option (click)="salvar()" value="sim">sim</ion-select-option>
+            <ion-select-option value="não">não</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-      <ion-item color="info">
-        <ion-select label="Qual o seu nível com Angular?" [(ngModel)]="angularLevel">
-          <ion-select-option value="beginner">Beginner</ion-select-option>
-          <ion-select-option value="intermediate">Intermediate</ion-select-option>
-          <ion-select-option value="advanced">Advanced</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item color="info">
+          <ion-select formControlName="nivel" label="Qual o seu nível com Angular?">
+            <ion-select-option value="iniciante">Beginner</ion-select-option>
+            <ion-select-option value="intermediario">Intermediate</ion-select-option>
+            <ion-select-option value="avançado">Advanced</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-    </ion-list>
+      </ion-list>
 
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col>
-        <ion-button shape="round" expand="full" (click)="salvar()">Salvar</ion-button>
-      </ion-col>
-      <ion-col></ion-col>
-    </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-button [disabled]="formControl.invalid" id="open-custom-dialog" shape="round" (click)="salvar()" expand="full">
+              Salvar
+            </ion-button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+        <ion-col><ion-button shape="round" expand="full" (click)="pular()">Pular</ion-button></ion-col>
+      </ion-row>
+    </form>
   </ion-content>
   <ion-footer>
     <ion-toolbar color="primary">
@@ -55,3 +60,19 @@
     </ion-toolbar>
   </ion-footer>
 </div>
+
+<ion-modal
+  id="example-modal" #modal trigger="open-custom-dialog"
+  >
+  <ng-template>
+    <div class="wrapper">
+      <h1>Aguarde...</h1>
+
+      <ion-list lines="none">
+        <ion-item>
+          <ion-progress-bar [value]="progress"></ion-progress-bar>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ng-template>
+</ion-modal>

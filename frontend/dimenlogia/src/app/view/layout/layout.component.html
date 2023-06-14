@@ -1,4 +1,3 @@
-
 <ion-menu contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
@@ -24,11 +23,6 @@
           </ion-button>
         </ion-item>
         <ion-item color="primary">
-          <ion-button id="open-custom-dialog" fill="clear" color="dark">
-            <ion-icon slot="start" name="play"></ion-icon>Tutorial
-          </ion-button>
-        </ion-item>
-        <ion-item color="primary">
           <ion-button (click)="form()" fill="clear" color="dark">
             <ion-icon slot="start" name="list"></ion-icon>Formulario
           </ion-button>
@@ -43,17 +37,4 @@
   </ion-menu>
 
   <ion-router-outlet></ion-router-outlet>
-  
-  <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
-    <ng-template>
-      <div class="wrapper">
-        <h1>Aguarde...</h1>
-  
-        <ion-list lines="none">
-          <ion-item>
-            <ion-progress-bar  [value]="progress"></ion-progress-bar>
-          </ion-item>
-        </ion-list>
-      </div>
-    </ng-template>
-  </ion-modal>
+

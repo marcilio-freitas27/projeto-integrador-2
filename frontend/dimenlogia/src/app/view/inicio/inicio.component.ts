@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormTutorialComponent } from '../form-tutorial/form-tutorial.component';
+import { TutorialService } from 'src/app/services/tutorial.service';
 
 enum MyEnum {
   Option1 = 'option1',
@@ -19,12 +21,16 @@ enum MyEnum {
 })
 export class InicioComponent  implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private form: TutorialService) { }
 
   ngOnInit() {}
 
-  onClick(){
+  home(){
     this.router.navigate(['/acesso/home'])
+  }
+
+  tutorial(){
+    this.form.getPulou() ? this.router.navigate(['/acesso/home']) : this.router.navigate(['/acesso/tutorial']);
   }
 
 }
