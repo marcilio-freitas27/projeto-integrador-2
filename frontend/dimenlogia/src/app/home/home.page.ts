@@ -3,6 +3,8 @@ import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { CommonModule } from '@angular/common';
+import { DadosCursos } from '../model/dados-cursos';
+import { TutorialService } from '../services/tutorial.service';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +21,12 @@ export class HomePage {
   alert: any;
   public alertButtons = ['OK'];
   public progress = 0;
+  dadosCursos: DadosCursos[];
   constructor(
     private router: Router,
-
+    private tutorial: TutorialService,
   ) {
+    this.dadosCursos = this.tutorial.getDadosCursos();
     this.items = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM']
   }
 

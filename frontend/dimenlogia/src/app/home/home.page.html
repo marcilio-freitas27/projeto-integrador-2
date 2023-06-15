@@ -1,8 +1,5 @@
-
-
-
 <div class="ion-page home" id="main-content">
-  <ion-header >
+  <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
@@ -12,41 +9,58 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content color="dark" class="telainicial">
-      <ion-text>
-        <h1>Dashboard</h1>
-      </ion-text>
-      <ion-card color="dark">
+  <ion-content class="telainicial">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-item-divider color="dark">
+            <h3>Dashboard</h3>
+          </ion-item-divider>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
         <canvas id="myChart" responsive="true"></canvas>
-      </ion-card>
-      <ion-text>
-        <h2>Meus cursos</h2>
-      </ion-text>
-      <ion-grid class="scroll">
-        <div *ngFor="let item of items">
-          <ion-row>
-            <ion-col>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="dark">
+            <h3>Meus Cursos</h3>
+          </ion-item-divider>
+
+          <ng-container *ngIf="dadosCursos.length !== 0">
+            <ion-item *ngFor="let item of dadosCursos">
+
               <ion-card>
-                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+                <img alt="Silhouette of mountains" [src]="item.logoCurso" />
                 <ion-card-header>
-                  <ion-card-title>{{item}}</ion-card-title>
-                  <ion-card-subtitle>{{item}} + fundamentals</ion-card-subtitle>
+                  <ion-card-title>Curso: {{item.nomeCurso}}</ion-card-title>
+                  <ion-card-subtitle>Info: {{item.infoCurso}} + fundamentals</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
-                  {{item}} + Course
+                  Nivel: {{item.nivelCurso}}
                 </ion-card-content>
               </ion-card>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-grid>
+            </ion-item>
+          </ng-container>
+
+          <ion-card *ngIf="dadosCursos.length === 0">
+            <ion-card-content>
+              Nenhum curso cadastrado
+            </ion-card-content>
+          </ion-card>
+
+        </ion-item-group>
+      </ion-list>
+    </ion-card>
   </ion-content>
   <ion-footer>
     <ion-toolbar color="primary">
       <ion-title class="ion-text-center">
-        Dimenlogia v1.0.0
+        Dimenlogia v2.0.0
       </ion-title>
     </ion-toolbar>
   </ion-footer>
 </div>
-

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { DadosCursos } from '../model/dados-cursos';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,26 @@ import { Router } from '@angular/router';
 export class TutorialService {
 
   pulou: boolean;
+  dadosCursos: DadosCursos[];
   constructor(private router: Router) { 
-     this.pulou = false;
+    this.pulou = false;
+    this.dadosCursos = [];
   }
  
   getPulou(){
     return this.pulou;
   }
 
-  pular() {
+  getDadosCursos(){
+    return this.dadosCursos;
+  }
+
+  setDadosCursos(dados: DadosCursos[]){
+    this.dadosCursos = dados;
+  }
+
+  async pular() {
     this.pulou = true;
-    this.router.navigate(['/acesso/home'])
+    await this.router.navigate(['/acesso/home'])
   }
 }
