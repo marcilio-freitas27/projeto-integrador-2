@@ -14,56 +14,57 @@ import { TutorialService } from '../services/tutorial.service';
   imports: [IonicModule, CommonModule],
 })
 export class HomePage {
-
   chart: any;
   ctx: any;
   items: any[];
   alert: any;
   public alertButtons = ['OK'];
   public progress = 0;
-  dadosCursos: DadosCursos[];
-  constructor(
-    private router: Router,
-    private tutorial: TutorialService,
-  ) {
-    this.dadosCursos = this.tutorial.getDadosCursos();
-    this.items = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM']
+  itensCursos: any[];
+  dadosCursos!: DadosCursos[];
+  constructor(private router: Router, private tutorial: TutorialService) {
+    this.items = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM'];
+    this.itensCursos = [];
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.buscarCursos();
+    this.dadosCursos = this.tutorial.getDadosCursos();
     this.getChart();
     this.getProgress();
-    this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`
+    this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`;
   }
 
-  getChart(){
+  getChart() {
     this.ctx = document.getElementById('myChart');
-
+    console.log(this.itensCursos);
     new Chart(this.ctx, {
       type: 'bar',
       data: {
-        labels: ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM'],
-        datasets: [{
-          label: 'Cursos',
-          data: [12, 19, 10, 10, 25, 15],
-          borderWidth: 1
-        }]
+        labels: this.itensCursos,
+        datasets: [
+          {
+            label: 'Cursos',
+            data: [10, 20, 40, 30, 50, 33],
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
+            beginAtZero: true,
+          },
+        },
+      },
     });
   }
 
-  loadData(event: any){
+  loadData(event: any) {
     this.items = event;
   }
 
-  getProgress(){
+  getProgress() {
     setInterval(() => {
       this.progress += 0.01;
       if (this.progress > 1) {
@@ -72,5 +73,13 @@ export class HomePage {
         }, 1000);
       }
     }, 50);
+  }
+
+  async buscarCursos() {
+    await this.tutorial.buscarDadosCursos().subscribe({
+      next: (res) => {
+        this.itensCursos = res;
+      },
+    });
   }
 }

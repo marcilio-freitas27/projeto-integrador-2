@@ -3,4 +3,5 @@ export class DadosCursos {
   logoCurso!: string;
   infoCurso!: string;
   nivelCurso!: string;
+  porcentagemCurso!: number;
 }

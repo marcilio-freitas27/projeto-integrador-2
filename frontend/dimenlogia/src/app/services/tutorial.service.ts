@@ -2,32 +2,40 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { DadosCursos } from '../model/dados-cursos';
 
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TutorialService {
-
   pulou: boolean;
   dadosCursos: DadosCursos[];
-  constructor(private router: Router) { 
+  url: any;
+  constructor(private router: Router, private http: HttpClient) {
     this.pulou = false;
     this.dadosCursos = [];
+    this.url = 'http://localhost:3000/dadosCursos';
   }
- 
-  getPulou(){
+
+  getPulou() {
     return this.pulou;
   }
 
-  getDadosCursos(){
+  getDadosCursos() {
     return this.dadosCursos;
   }
 
-  setDadosCursos(dados: DadosCursos[]){
+  buscarDadosCursos(): Observable<any[]> {
+    return this.http.get<any[]>(this.url);
+  }
+
+  setDadosCursos(dados: DadosCursos[]) {
     this.dadosCursos = dados;
   }
 
   async pular() {
     this.pulou = true;
-    await this.router.navigate(['/acesso/home'])
+    await this.router.navigate(['/acesso/home']);
   }
 }
