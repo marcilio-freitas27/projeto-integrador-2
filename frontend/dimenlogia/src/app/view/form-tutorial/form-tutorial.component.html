@@ -26,6 +26,12 @@
           </ion-item>
         </div>
 
+        <div *ngIf="prog.value === 'não'">
+          <ion-item>
+            <ion-input value=null type="text" label="Quais linguagens vc conhece?" labelPlacement="stacked"></ion-input>
+          </ion-item>
+        </div>
+
         <ion-item>
           <ion-select #ng formControlName="angular" label="Você conhece o Angular?">
             <ion-select-option (click)="salvar()" value="sim">sim</ion-select-option>
@@ -39,6 +45,14 @@
               <ion-select-option value="iniciante">Iniciante</ion-select-option>
               <ion-select-option value="intermediario">Intermediario</ion-select-option>
               <ion-select-option value="avançado">Avançado</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div *ngIf="ng.value === 'não'">
+          <ion-item>
+            <ion-select value=null label="Nível com Angular">
+              <ion-select-option value=null>null</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
@@ -60,7 +74,7 @@
   <ion-footer>
     <ion-toolbar color="primary">
       <ion-title class="ion-text-center">
-        Dimenlogia v1.0.0
+        Dimenlogia v2.0.0
       </ion-title>
     </ion-toolbar>
   </ion-footer>

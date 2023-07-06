@@ -196,21 +196,22 @@
    */
 
   .md body {
-    --ion-background-color: linear-gradient(
-      90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(56, 128, 255, 1) 35%,
-      rgba(0, 212, 255, 1) 100%
-    ) !important;
+    // --ion-background-color: linear-gradient(
+    //   90deg,
+    //   rgba(2, 0, 36, 1) 0%,
+    //   rgba(56, 128, 255, 1) 35%,
+    //   rgba(0, 212, 255, 1) 100%
+    // ) !important;
     --ion-border-color: 2px solid rgb(2, 0, 36) !important;
+    --ion-background-color: #1e1e1e;
 
-    --ion-background-color: radial-gradient(
-      circle at 100%,
-      rgba(2, 0, 36, 1),
-      rgba(2, 0, 36, 1) 50%,
-      rgba(0, 212, 255, 1) 75%,
-      rgba(56, 128, 255, 1) 75%
-    );
+    // --ion-background-color: radial-gradient(
+    //   circle at 100%,
+    //   rgba(2, 0, 36, 1),
+    //   rgba(2, 0, 36, 1) 50%,
+    //   rgba(0, 212, 255, 1) 75%,
+    //   rgba(56, 128, 255, 1) 75%
+    // );
 
     --ion-background-color-rgb: 18, 18, 18;
 
@@ -241,7 +242,12 @@
 
     --ion-item-background: #1e1e1e;
 
-    --ion-toolbar-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(56,128,255,1) 35%, rgba(0,212,255,1) 100%) !important;
+    --ion-toolbar-background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(56, 128, 255, 1) 35%,
+      rgba(0, 212, 255, 1) 100%
+    ) !important;
 
     --ion-tab-bar-background: #1f1f1f;
 

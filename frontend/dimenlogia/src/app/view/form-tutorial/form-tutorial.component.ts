@@ -1,11 +1,10 @@
-
-import { 
-  FormBuilder, 
-  FormGroup, 
-  FormsModule, 
-  NgForm, 
-  ReactiveFormsModule, 
-  Validators 
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal, IonicModule } from '@ionic/angular';
@@ -21,8 +20,7 @@ import { DadosCursos } from 'src/app/model/dados-cursos';
   standalone: true,
   imports: [IonicModule, FormsModule, ReactiveFormsModule, CommonModule],
 })
-export class FormTutorialComponent  implements OnInit {
-
+export class FormTutorialComponent implements OnInit {
   experience!: string;
   languages!: string;
   angularKnowledge!: string;
@@ -37,41 +35,39 @@ export class FormTutorialComponent  implements OnInit {
     private router: Router,
     private tutorial: TutorialService,
     private formBuilder: FormBuilder
-  ){
+  ) {
     this.dadosCursos = [];
   }
 
   ngOnInit() {
     this.formControl = this.formBuilder.group({
-      programacao:["", Validators.required],
-      linguagem: ["", Validators.required],
-      angular:["", Validators.required],
-      nivel:["", Validators.required],
-    })
+      programacao: [null, Validators.required],
+      linguagem: [null, Validators.required],
+      angular: [null, Validators.required],
+      nivel: [null, Validators.required],
+    });
   }
 
   closeModal() {
     this.modal.dismiss();
   }
 
-  setDadosCursos(dados: DadosCursos[]){
+  setDadosCursos(dados: DadosCursos[]) {
     this.tutorial.setDadosCursos(dados);
   }
 
-  gerarCursos(){
-    if(this.formControl.get('programacao')?.value === 'sim'
-    ){
+  gerarCursos() {
+    if (this.formControl.get('programacao')?.value === 'sim') {
       this.dadosCursos = [];
       this.setDadosCursos(this.dadosCursos);
-    }else {
-      null
+    } else {
+      null;
     }
-    if(this.formControl.get('angular')?.value === 'sim'
-    ){
+    if (this.formControl.get('angular')?.value === 'sim') {
       this.dadosCursos = [];
       this.setDadosCursos(this.dadosCursos);
-    }else {
-      null
+    } else {
+      null;
     }
   }
 
@@ -81,7 +77,7 @@ export class FormTutorialComponent  implements OnInit {
       this.formControl.get('angular')?.value,
       this.formControl.get('linguagem')?.value,
       this.formControl.get('programacao')?.value
-      );
+    );
     this.getProgress();
   }
 
@@ -89,17 +85,16 @@ export class FormTutorialComponent  implements OnInit {
     this.tutorial.pular();
   }
 
-  getProgress(){
+  getProgress() {
     setInterval(() => {
       this.progress += 0.01;
       if (this.progress > 1) {
         setTimeout(() => {
           this.progress = 0;
         }, 1000);
-        this.tutorial.pular();
+        // this.tutorial.pular();
         this.closeModal();
       }
     }, 50);
   }
-
 }
