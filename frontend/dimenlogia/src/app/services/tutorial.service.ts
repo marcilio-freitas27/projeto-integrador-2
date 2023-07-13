@@ -22,12 +22,16 @@ export class TutorialService {
     return this.pulou;
   }
 
+  setPulou(escolha: boolean) {
+    this.pulou = escolha;
+  }
+
   getDadosCursos() {
     return this.dadosCursos;
   }
 
-  buscarDadosCursos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+  buscarDadosCursos(): Observable<any> {
+    return this.http.get<any>(this.url);
   }
 
   setDadosCursos(dados: DadosCursos[]) {
@@ -35,7 +39,7 @@ export class TutorialService {
   }
 
   async pular() {
-    this.pulou = true;
+    // this.pulou = true;
     await this.router.navigate(['/acesso/home']);
   }
 }

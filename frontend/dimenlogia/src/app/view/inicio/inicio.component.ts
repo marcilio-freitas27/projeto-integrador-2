@@ -16,11 +16,18 @@ import { TutorialService } from 'src/app/services/tutorial.service';
 export class InicioComponent implements OnInit {
   constructor(private router: Router, private form: TutorialService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.setTutorial();
+    localStorage.removeItem('formulario');
+  }
 
   home() {
     this.router.navigate(['/acesso/home']);
   }
+
+  // setTutorial() {
+  //   this.form.setPulou(false);
+  // }
 
   tutorial() {
     this.router.navigate(['/acesso/tutorial']);

@@ -28,7 +28,8 @@
 
         <div *ngIf="prog.value === 'não'">
           <ion-item>
-            <ion-input value=null type="text" label="Quais linguagens vc conhece?" labelPlacement="stacked"></ion-input>
+            <ion-input value='vazio' type="text" label="Quais linguagens vc conhece?"
+              labelPlacement="stacked"></ion-input>
           </ion-item>
         </div>
 
@@ -51,8 +52,8 @@
 
         <div *ngIf="ng.value === 'não'">
           <ion-item>
-            <ion-select value=null label="Nível com Angular">
-              <ion-select-option value=null>null</ion-select-option>
+            <ion-select value='vazio' label="Nível com Angular">
+              <ion-select-option value='vazio'>vazio</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
@@ -60,8 +61,7 @@
 
       <ion-row>
         <ion-col>
-          <ion-button [disabled]="formControl.invalid" id="open-custom-dialog" shape="round" (click)="salvar()"
-            expand="full">
+          <ion-button id="open-custom-dialog" shape="round" (click)="salvar()" expand="full">
             Salvar
           </ion-button>
         </ion-col>
@@ -74,7 +74,7 @@
   <ion-footer>
     <ion-toolbar color="primary">
       <ion-title class="ion-text-center">
-        Dimenlogia v2.0.0
+        Logical Dimension v3.0.0
       </ion-title>
     </ion-toolbar>
   </ion-footer>

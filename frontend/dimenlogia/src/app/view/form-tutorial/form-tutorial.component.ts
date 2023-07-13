@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { CommonModule } from '@angular/common';
 import { DadosCursos } from 'src/app/model/dados-cursos';
+import { Formulario } from 'src/app/model/formulario';
+
 
 @Component({
   selector: 'app-form-tutorial',
@@ -25,8 +27,8 @@ export class FormTutorialComponent implements OnInit {
   languages!: string;
   angularKnowledge!: string;
   angularLevel!: string;
-  dadosCursos: DadosCursos[];
-
+  dadosCursos!: DadosCursos[];
+  formulario!: Formulario;
   @ViewChild(IonModal) modal: IonModal | any;
 
   formControl!: FormGroup;
@@ -35,16 +37,17 @@ export class FormTutorialComponent implements OnInit {
     private router: Router,
     private tutorial: TutorialService,
     private formBuilder: FormBuilder
-  ) {
-    this.dadosCursos = [];
-  }
+  ) {}
 
   ngOnInit() {
+    localStorage.getItem('formulario');
+    this.dadosCursos = [];
+    this.formulario = new Formulario();
     this.formControl = this.formBuilder.group({
-      programacao: [null, Validators.required],
-      linguagem: [null, Validators.required],
-      angular: [null, Validators.required],
-      nivel: [null, Validators.required],
+      programacao: ['', Validators.required],
+      linguagem: ['', Validators.required],
+      angular: ['', Validators.required],
+      nivel: ['', Validators.required],
     });
   }
 
@@ -57,44 +60,83 @@ export class FormTutorialComponent implements OnInit {
   }
 
   gerarCursos() {
+    this.dadosCursos = [];
     if (this.formControl.get('programacao')?.value === 'sim') {
-      this.dadosCursos = [];
+      this.dadosCursos[0] = {
+        nomeCurso: 'Poo',
+        logoCurso: 'img',
+        infoCurso: 'Curso muito bom',
+        nivelCurso: 'Intermediario',
+        porcentagemCurso: 5,
+      };
       this.setDadosCursos(this.dadosCursos);
     } else {
-      null;
+      this.dadosCursos[0] = {
+        nomeCurso: 'Algoritmos com Portugol',
+        logoCurso: 'img',
+        infoCurso:
+          'Introdução a programação e aos algoritmos com a pseudoliguagem Porgugol',
+        nivelCurso: 'Inciante',
+        porcentagemCurso: 0,
+      };
+      this.setDadosCursos(this.dadosCursos);
     }
+
     if (this.formControl.get('angular')?.value === 'sim') {
-      this.dadosCursos = [];
+      this.dadosCursos[1] = {
+        nomeCurso: 'Angular',
+        logoCurso: 'img',
+        infoCurso: 'Curso Top',
+        nivelCurso: 'Iniciante',
+        porcentagemCurso: 20,
+      };
       this.setDadosCursos(this.dadosCursos);
     } else {
-      null;
+      this.dadosCursos[1] = {
+        nomeCurso: 'Lógica de programação',
+        logoCurso: 'img',
+        infoCurso: 'Introdução a lógica de programação.',
+        nivelCurso: 'Iniciante',
+        porcentagemCurso: 20,
+      };
+      this.setDadosCursos(this.dadosCursos);
     }
   }
 
   salvar() {
-    console.log(
-      this.formControl.get('nivel')?.value,
-      this.formControl.get('angular')?.value,
-      this.formControl.get('linguagem')?.value,
-      this.formControl.get('programacao')?.value
-    );
+    this.formulario.nivel = this.formControl.get('nivel')?.value;
+    this.formulario.angular = this.formControl.get('angular')?.value;
+    this.formulario.linguagem = this.formControl.get('linguagem')?.value;
+    this.formulario.programacao = this.formControl.get('programacao')?.value;
+    localStorage.setItem('formulario', JSON.stringify(this.formulario));
+    this.gerarCursos();
     this.getProgress();
+    // clearInterval(this.getProgress());
   }
 
   pular() {
-    this.tutorial.pular();
+    this.formulario.nivel = this.formControl.get('nivel')?.value;
+    this.formulario.angular = this.formControl.get('angular')?.value;
+    this.formulario.linguagem = this.formControl.get('linguagem')?.value;
+    this.formulario.programacao = this.formControl.get('programacao')?.value;
+    localStorage.setItem('formulario', JSON.stringify(this.formulario));
+    this.gerarCursos();
+    // this.tutorial.pular();
   }
 
   getProgress() {
-    setInterval(() => {
+    let interval = setInterval(() => {
       this.progress += 0.01;
       if (this.progress > 1) {
-        setTimeout(() => {
+        let timer = setTimeout(() => {
           this.progress = 0;
         }, 1000);
-        // this.tutorial.pular();
+        clearTimeout(timer);
         this.closeModal();
+        this.router.navigate(['/acesso/home']);
+        return;
       }
     }, 50);
+    return interval;
   }
 }

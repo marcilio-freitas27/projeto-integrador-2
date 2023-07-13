@@ -42,6 +42,9 @@
                 <ion-card-content>
                   Nivel: {{item.nivelCurso}}
                 </ion-card-content>
+                <ion-text color="primary">
+                  <p>Progresso: {{item.porcentagemCurso / 100 | percent}}</p>
+                </ion-text>
               </ion-card>
             </ion-item>
           </ng-container>
@@ -59,7 +62,7 @@
   <ion-footer>
     <ion-toolbar color="primary">
       <ion-title class="ion-text-center">
-        Dimenlogia v2.0.0
+        Logical Dimension v3.0.0
       </ion-title>
     </ion-toolbar>
   </ion-footer>

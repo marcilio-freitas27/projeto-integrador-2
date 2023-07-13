@@ -16,32 +16,30 @@ import { TutorialService } from '../services/tutorial.service';
 export class HomePage {
   chart: any;
   ctx: any;
-  items: any[];
+  itens!: any[];
   alert: any;
   public alertButtons = ['OK'];
   public progress = 0;
-  itensCursos: any[];
+  itensCursos!: any;
   dadosCursos!: DadosCursos[];
-  constructor(private router: Router, private tutorial: TutorialService) {
-    this.items = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM'];
-    this.itensCursos = [];
-  }
+  constructor(private router: Router, private tutorial: TutorialService) {}
 
   ngOnInit() {
+    this.itens = ['POO', 'Lógica', 'JS', 'UX', 'MySQL', 'ORM'];
     this.buscarCursos();
     this.dadosCursos = this.tutorial.getDadosCursos();
+    console.log(this.dadosCursos);
     this.getChart();
-    this.getProgress();
+    // this.getProgress();
     this.alert = `<ion-progress-bar  [value]='${this.progress}'></ion-progress-bar>`;
   }
 
   getChart() {
     this.ctx = document.getElementById('myChart');
-    console.log(this.itensCursos);
     new Chart(this.ctx, {
       type: 'bar',
       data: {
-        labels: this.itensCursos,
+        labels: this.itens,
         datasets: [
           {
             label: 'Cursos',
@@ -60,10 +58,6 @@ export class HomePage {
     });
   }
 
-  loadData(event: any) {
-    this.items = event;
-  }
-
   getProgress() {
     setInterval(() => {
       this.progress += 0.01;
@@ -75,8 +69,8 @@ export class HomePage {
     }, 50);
   }
 
-  async buscarCursos() {
-    await this.tutorial.buscarDadosCursos().subscribe({
+  buscarCursos() {
+    this.tutorial.buscarDadosCursos().subscribe({
       next: (res) => {
         this.itensCursos = res;
       },
